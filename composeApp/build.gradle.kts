@@ -24,7 +24,7 @@ kotlin {
             implementation(libs.androidx.activity.compose)
         }
         commonMain.dependencies {
-            implementation(project(":avatar-cropper"))
+            implementation(project(":compose-avatar-cropper"))
             implementation(compose.runtime)
             implementation(compose.foundation)
             implementation(compose.material3)

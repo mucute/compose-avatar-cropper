@@ -21,14 +21,11 @@ import cn.mucute.compose.avatar.cropper.AvatarCropper
 import cn.mucute.compose.avatar.cropper.CropShape
 import cn.mucute.compose.avatar.cropper.rememberCropState
 
-import compose_avatar_cropper.composeapp.generated.resources.Res
-import compose_avatar_cropper.composeapp.generated.resources.compose_multiplatform
 
 @Composable
 @Preview
 fun App() {
     MaterialTheme {
-        var showContent by remember { mutableStateOf(false) }
         var selectedImage by remember { mutableStateOf<ImageBitmap?>(null) }
         var croppedImage by remember { mutableStateOf<ImageBitmap?>(null) }
         var showCropper by remember { mutableStateOf(false) }
@@ -63,20 +60,6 @@ fun App() {
                     Spacer(modifier = Modifier.height(16.dp))
                     Button(onClick = { croppedImage = null }) {
                         Text("Clear")
-                    }
-                } else {
-                    Button(onClick = { showContent = !showContent }) {
-                        Text("Click me!")
-                    }
-                    AnimatedVisibility(showContent) {
-                        val greeting = remember { Greeting().greet() }
-                        Column(
-                            modifier = Modifier.fillMaxWidth(),
-                            horizontalAlignment = Alignment.CenterHorizontally,
-                        ) {
-                            Image(painterResource(Res.drawable.compose_multiplatform), null)
-                            Text("Compose: $greeting")
-                        }
                     }
                 }
             }

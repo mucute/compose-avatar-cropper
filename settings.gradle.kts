@@ -1,4 +1,4 @@
-rootProject.name = "compose-avatar-cropper"
+rootProject.name = "compose-avatar-cropper-project"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 pluginManagement {
@@ -34,3 +34,4 @@ plugins {
 
 include(":composeApp")
 include(":avatar-cropper")
+project(":avatar-cropper").name = "compose-avatar-cropper"

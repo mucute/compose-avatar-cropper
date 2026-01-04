@@ -1,12 +1,13 @@
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKotlinMultiplatformLibrary)
     alias(libs.plugins.androidLint)
     alias(libs.plugins.composeMultiplatform)
     alias(libs.plugins.composeCompiler)
+    id("com.vanniktech.maven.publish")
+    signing
 }
-
-apply(from = "publish.gradle.kts")
 
 kotlin {
 
@@ -50,4 +51,54 @@ kotlin {
         }
     }
 
+}
+
+
+tasks.withType<Javadoc>().configureEach {
+    options.encoding = "UTF-8"
+    (options as StandardJavadocDocletOptions).apply {
+        addBooleanOption("Xdoclint:none", true)
+        links("https://docs.oracle.com/en/java/javase/17/docs/api/")
+        isVersion = true
+        isAuthor = true
+        charSet = "UTF-8"
+    }
+}
+
+mavenPublishing {
+
+    coordinates("cn.mucute", "compose-avatar-cropper", "1.0.0")
+
+    pom {
+        name.set("compose-avatar-cropper")
+        description.set("Compose Avatar Cropper is a lightweight and powerful image cropping library built with Kotlin Multiplatform and Jetpack Compose. It is designed for selecting and cropping user avatars with support for touch gestures.")
+        url.set("https://github.com/mucute/compose-avatar-cropper")
+
+        licenses {
+            license {
+                name.set("The Apache License, Version 2.0")
+                url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                distribution.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+            }
+        }
+
+        developers {
+            developer {
+                name.set("mucute")
+                url.set("https://github.com/mucute")
+                email.set("mucute1215@gmail.com")
+            }
+        }
+
+        scm {
+            connection.set("scm:git:git://github.com/mucute/compose-avatar-cropper.git")
+            developerConnection.set("scm:git:ssh://github.com/mucute/compose-avatar-cropper.git")
+            url.set("https://github.com/mucute/compose-avatar-cropper.git")
+        }
+    }
+
+
+    publishToMavenCentral()
+
+    signAllPublications()
 }

@@ -27,7 +27,7 @@ Add the dependency to your `build.gradle.kts` (commonMain):
 
 ```kotlin
 commonMain.dependencies {
-    implementation("cn.mucute.compose:avatar-cropper:1.0.0")
+    implementation("cn.mucute:compose-avatar-cropper:1.0.0")
 }
 ```
 
@@ -107,7 +107,7 @@ fun MyCropperScreen(imageBitmap: ImageBitmap) {
 
 ```kotlin
 commonMain.dependencies {
-    implementation("cn.mucute.compose:avatar-cropper:1.0.0")
+    implementation("cn.mucute:compose-avatar-cropper:1.0.0")
 }
 ```
 
